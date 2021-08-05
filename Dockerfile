@@ -9,7 +9,7 @@ RUN apt-get update && \
     mkdir /config /downloads /opt/nzbhydra2 && \
     curl --location --output /tmp/nzbhydra2.zip "https://github.com/theotherp/nzbhydra2/releases/download/v${VERSION}/nzbhydra2-${VERSION}-linux.zip" && \
     unzip /tmp/nzbhydra2.zip -d /tmp/nzbhydra2 && \
-    mv /tmp/nzbhydra2/lib/core-3.15.0-exec.jar /opt/nzbhydra2/core-3.15.0-exec.jar && \
+    mv "/tmp/nzbhydra2/lib/core-${VERSION}-exec.jar" "/opt/nzbhydra2/nzbhydra2.jar" && \
     chown --recursive 1000:1000 /config /downloads /opt/nzbhydra2 && \
     rm --force --recursive /tmp/nzbhydra2.zip /tmp/nzbhydra2
 
@@ -18,4 +18,4 @@ VOLUME /config /downloads
 WORKDIR /opt/nzbhydra2
 
 EXPOSE 5076
-CMD ["java", "-jar", "/opt/nzbhydra2/core-3.15.0-exec.jar", "directstart", "-data=/config", "-nobrowser"]
+CMD ["java", "-jar", "/opt/nzbhydra2/nzbhydra2.jar", "directstart", "-data=/config", "-nobrowser"]
