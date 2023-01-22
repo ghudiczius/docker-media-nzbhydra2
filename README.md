@@ -1,6 +1,6 @@
-# NZBHydra 2
+# NZBHydra2
 
-Simple docker image for NZBHydra 2 without any bloat, built on the official AdoptOpenJDK image. NZBHydra 2 runs as user `nzbhydra2` with `uid` and `gid` `1000` without the Python wrapper and listens on port `5076`.
+Simple docker image for NZBHydra2 without any bloat, built on the official Temurin JRE image. NZBHydra2 runs as user `nzbhydra2` with `uid` and `gid` `1000` and listens on port `5076`.
 
 ## Usage
 
