@@ -7,7 +7,7 @@ RUN apt-get update && \
     groupadd --gid=1000 nzbhydra2 && \
     useradd --gid=1000 --home-dir=/opt/nzbhydra2 --no-create-home --shell /bin/bash --uid 1000 nzbhydra2 && \
     mkdir /config /downloads /opt/nzbhydra2 && \
-    curl --location --output /tmp/nzbhydra2.zip "https://github.com/theotherp/nzbhydra2/releases/download/v${VERSION}/nzbhydra2-${VERSION}-linux.zip" && \
+    curl --location --output /tmp/nzbhydra2.zip "https://github.com/theotherp/nzbhydra2/releases/download/v${VERSION}/nzbhydra2-${VERSION}-amd64-linux.zip" && \
     unzip /tmp/nzbhydra2.zip -d /opt/nzbhydra2 && \
     chmod +x /opt/nzbhydra2/core /opt/nzbhydra2/nzbhydra2 && \
     chown --recursive 1000:1000 /config /downloads /opt/nzbhydra2 && \
