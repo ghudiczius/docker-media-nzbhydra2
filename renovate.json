@@ -1,3 +1,58 @@
 {
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json"
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "commitMessagePrefix": "renovate:",
+  "customManagers": [{
+    "customType": "regex",
+    "datasourceTemplate": "docker",
+    "depNameTemplate": "docker.io/library/eclipse-temurin",
+    "fileMatch": [
+      "Dockerfile"
+    ],
+    "matchStrings": [
+      "FROM eclipse-temurin:(?<currentValue>.*)"
+    ],
+    "versioningTemplate": "regex:^(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)\\_(?<build>\\d+)-jre$"
+  }, {
+    "customType": "regex",
+    "datasourceTemplate": "github-releases",
+    "depNameTemplate": "theotherp/nzbhydra2",
+    "fileMatch": [
+      "^.gitlab-ci\\.ya?ml$"
+    ],
+    "matchStrings": [
+      "VERSION: \"(?<currentValue>.*)\""
+    ],
+    "versioningTemplate": "semver"
+  }],
+  "packageRules": [{
+    "allowedVersions": "=17.x",
+    "matchPackageNames": [
+      "docker.io/library/eclipse-temurin"
+    ]
+  }, {
+    "autoApprove": true,
+    "matchUpdateTypes": [
+      "major"
+    ]
+  }, {
+    "automerge": true,
+    "matchUpdateTypes": [
+      "minor"
+    ]
+  }, {
+    "automerge": true,
+    "automergeType": "branch",
+    "matchUpdateTypes": [
+      "patch"
+    ]
+  }, {
+    "ignoreUnstable": false,
+    "matchPackageNames": [
+      "theotherp/nzbhydra2"
+    ],
+    "separateMajorMinor": true,
+    "separateMinorPatch": true,
+    "separateMultipleMajor": true,
+    "separateMultipleMinor": true
+  }]
 }
