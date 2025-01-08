@@ -2,6 +2,8 @@ FROM eclipse-temurin:17.0.13_11-jre
 
 ARG VERSION
 
+ADD init /init
+
 RUN apt-get update && \
     apt-get --assume-yes install unzip && \
     groupmod --gid=1000 --new-name nzbhydra2 ubuntu && \
@@ -18,5 +20,5 @@ VOLUME /config /downloads
 WORKDIR /opt/nzbhydra2
 
 EXPOSE 5076
-ENTRYPOINT ["/opt/nzbhydra2/code"]
+ENTRYPOINT ["/init"]
 CMD ["directstart", "--datafolder=/config", "--nobrowser"]

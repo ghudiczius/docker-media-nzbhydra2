@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+
+/opt/nzbhydra2/core -DinternalApiKey="$(tr -dc a-z </dev/random | head -c20)" "$@"
