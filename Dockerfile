@@ -4,9 +4,9 @@ ARG VERSION
 
 RUN apt-get update && \
     apt-get --assume-yes install unzip && \
-    groupadd --gid=1000 nzbhydra2 && \
-    useradd --gid=1000 --home-dir=/opt/nzbhydra2 --no-create-home --shell /bin/bash --uid 1000 nzbhydra2 && \
-    mkdir /config /downloads /opt/nzbhydra2 && \
+    groupmod --gid=1000 --new-name nzbhydra2 ubuntu && \
+    usermod --comment "" --gid=1000 --home=/opt/nzbhydra2 --login nzbhydra2 --move-home --shell /bin/bash --uid 1000 ubuntu && \
+    mkdir /config /downloads && \
     curl --location --output /tmp/nzbhydra2.zip "https://github.com/theotherp/nzbhydra2/releases/download/v${VERSION}/nzbhydra2-${VERSION}-amd64-linux.zip" && \
     unzip /tmp/nzbhydra2.zip -d /opt/nzbhydra2 && \
     chmod +x /opt/nzbhydra2/core && \
