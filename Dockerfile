@@ -9,7 +9,7 @@ RUN apt-get update && \
     mkdir /config /downloads /opt/nzbhydra2 && \
     curl --location --output /tmp/nzbhydra2.zip "https://github.com/theotherp/nzbhydra2/releases/download/v${VERSION}/nzbhydra2-${VERSION}-amd64-linux.zip" && \
     unzip /tmp/nzbhydra2.zip -d /opt/nzbhydra2 && \
-    chmod +x /opt/nzbhydra2/core /opt/nzbhydra2/nzbhydra2 && \
+    chmod +x /opt/nzbhydra2/core && \
     chown --recursive 1000:1000 /config /downloads /opt/nzbhydra2 && \
     rm --force --recursive /tmp/nzbhydra2.zip /tmp/nzbhydra2
 
@@ -18,4 +18,5 @@ VOLUME /config /downloads
 WORKDIR /opt/nzbhydra2
 
 EXPOSE 5076
-CMD ["/opt/nzbhydra2/nzbhydra2", "--datafolder=/config", "--nobrowser"]
+ENTRYPOINT ["/opt/nzbhydra2/code"]
+CMD ["directstart", "--datafolder=/config", "--nobrowser"]
