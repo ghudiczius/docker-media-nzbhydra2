@@ -1,4 +1,4 @@
-FROM eclipse-temurin:17.0.15_6-jre
+FROM eclipse-temurin:17.0.16_8-jre
 
 ARG VERSION
 
